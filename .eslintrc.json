@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended","prettier","plugin:node/recommended"
+    ],
+    "overrides": [
+    ],
+    "plugins":["prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        //"prettier/prettier": "error",
+        "no-unused-vars":"warn",
+        "quotes": [
+            "error",
+            "double",
+            { "avoidEscape": true, "allowTemplateLiterals": true }
+          ],
+          "semi": ["error", "never"],
+          "no-console": "warn",
+          "no-process-exit":"off"
+    }
+}
