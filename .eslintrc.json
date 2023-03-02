@@ -24,6 +24,20 @@
           ],
           "semi": ["error", "never"],
           "no-console": "warn",
-          "no-process-exit":"off"
+          "no-process-exit":"off",
+          "indent": ["error", 2],
+          "node/no-unsupported-features/es-syntax": ["off", {
+            "version": ">=8.0.0",
+            "ignores": []
+        }],
+        "keyword-spacing": ["error", { "after": true }],
+          "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "if", "next": "*" },
+      { "blankLine": "any", "prev": "if", "next": "if" },
+      { "blankLine": "always", "prev": "*", "next": "block" },
+      { "blankLine": "always", "prev": "block", "next": "*" },
+      { "blankLine": "any", "prev": "block", "next": "block" }
+    ]
     }
 }
