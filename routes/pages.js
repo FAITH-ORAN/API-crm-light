@@ -10,14 +10,17 @@ const Pages = require("../models/Pages")
 const result = require("../middelware/result")
 
 const router =express.Router()
+
+const { protect,checkPermission} = require("../middelware/auth")
+
 router.route("/")
   .get(result(Pages),getPages)
-  .post(createPage)
+  .post(protect,checkPermission("admin","manager"),createPage)
 
 router.route("/:id")
   .get(getPage)
-  .put(updatePage)
-  .delete(deletePage)
+  .put(protect,updatePage)
+  .delete(protect,checkPermission("admin","manager"),deletePage)
 
 
 

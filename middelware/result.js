@@ -7,12 +7,29 @@ const result = (model, populate) => async (req,res,next) =>{
   const excludeFields = ["select", "sort","page","limit"]
   excludeFields.forEach(param =>delete reqQ[param])
   
+  // Only show pages with status 'published' to non-logged in users
+  // Show pages with status 'published' and 'draft' to logged in users
+  //const statusFilter = !req.user ? "published": ["published", "draft"]
+  //console.log(reqQ)
+  // if (!reqQ.status) {
+  
+  //eqQ.status = statusFilter
+  //} else if (Array.isArray(reqQ.status)) {
+  //reqQ.status = reqQ.status.filter((status) =>
+  // statusFilter.includes(status)
+  //)
+  //} else if (!statusFilter.includes(reqQ.status)) {
+  //reqQ.status = []
+  //}
+
+
 
   //@ dd -> filtering with one or many arg
   let queryString = JSON.stringify(reqQ)
 
   query = model.find(JSON.parse(queryString))
 
+  
   // @add -> select
   if (req.query.select){
     const field = req.query.select.split(",").join(" ")
@@ -66,6 +83,9 @@ const result = (model, populate) => async (req,res,next) =>{
     data: results
   }
   next()
+
+
+
 
 }
 

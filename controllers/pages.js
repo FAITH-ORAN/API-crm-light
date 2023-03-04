@@ -3,9 +3,9 @@ const Pages = require("../models/Pages")
 
 // desc: Get all pages ->Get /api/v1/pages -> permission: All(published),logged(published+draft)
 exports.getPages = async(req,res,next) =>{
+
   try {
-    
-    
+    console.log(req.user)
     res.status(200).json(res.result)
   } catch (error) {
     next(error)
@@ -29,8 +29,9 @@ exports.getPage = async(req,res,next) =>{
 // desc: Create new page ->POST /api/v1/pages -> permission: Admin, Manager
 exports.createPage = async(req,res,next) =>{
   try {
+    // Add user to req.body
+    req.body.creator =  req.user.id
     const page = await Pages.create(req.body)
-
     res.status(201).json({
       success: true,
       data: page
@@ -43,6 +44,8 @@ exports.createPage = async(req,res,next) =>{
 // desc: Update new page ->PUT /api/v1/pages/:id -> permission: Logged
 exports.updatePage =async (req,res,next) =>{
   try {
+    // Add user to req.body
+    req.body.modifiedBy = req.user.id
     const page = await Pages.findByIdAndUpdate(req.params.id,req.body,{
       new :true,
       runValidators: true

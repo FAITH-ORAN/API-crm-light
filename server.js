@@ -2,6 +2,7 @@ const express = require("express")
 const dotenv = require("dotenv")
 const morgan = require("morgan")
 const colors = require("colors")
+const cookieParser = require("cookie-parser")
 const errorHandler = require("./middelware/error")
 const connectDB = require("./config/db")
 
@@ -21,6 +22,9 @@ const app = express()
 
 //Body parser
 app.use(express.json())
+
+//Coockie parser
+app.use(cookieParser())
 
 
 // logging middelware

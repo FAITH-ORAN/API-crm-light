@@ -18,12 +18,10 @@ const PageSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
-  creator: {
-    type: String
-  },
-  modifiedBy: {
-    type: String
-  },
+  modifiedBy: [{
+    type: mongoose.Schema.ObjectId,
+    ref: "Users"
+  }],
   createdAt: {
     type: Date,
     default: Date.now
@@ -31,6 +29,11 @@ const PageSchema = new mongoose.Schema({
   status: {
     type: String, 
     enum: ["published","draft"]
+  },
+  creator:{
+    type: mongoose.Schema.ObjectId,
+    ref: "Users",
+    required:true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
   }
 })
 // create page slug from title and use casual to field title and content

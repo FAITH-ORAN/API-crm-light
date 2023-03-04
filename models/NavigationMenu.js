@@ -4,6 +4,7 @@ const MenuSchema = new mongoose.Schema({
   name: {
     type:String,
     trim: true,
+    unique:true,
     required: [true,"Veuillez ajouter un nom pour votre menu "]
   },
   pages:[{
