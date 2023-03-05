@@ -6,7 +6,7 @@
 
 - To view my documentation on Postman please click [postman](https://documenter.getpostman.com/view/2s93JnVSVB?version=latest#b72a75b5-2f96-4a3c-8fad-8b7d895f1fc6)
 
-- the {{url}} is your localhost, ex: http://localhost/5000
+- the {{url}} is your localhost, ex: http://localhost:5000
 
 **CRM API light**
 
