@@ -1,6 +1,5 @@
 const fs = require("fs")
 const mongoose = require("mongoose")
-const colors = require("colors")
 const dotenv = require("dotenv")
 
 //env vars
@@ -29,28 +28,23 @@ const importIntoDb = async()=>{
     await Page.create(pages)
     await Menu.create(menu)
     await User.create(user)
-    console.log("data imported...".green.inverse)
     process.exit()
   } catch (error) {
-    console.error(error)
+    //console.error(error)
   }
 }
 
-
 //delete data
-
 const deleteFromDb = async()=>{
   try {
     await Page.deleteMany()
     await Menu.deleteMany()
     await User.deleteMany()
-    console.log("data deleted...".red.inverse)
     process.exit()
   } catch (error) {
-    console.error(error)
+    //console.error(error)
   }
 }
-
 
 if (process.argv[2]==="-i"){
   importIntoDb()

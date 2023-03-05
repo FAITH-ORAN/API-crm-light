@@ -10,8 +10,7 @@ const MenuSchema = new mongoose.Schema({
   pages:[{
     type: mongoose.Schema.ObjectId,
     ref: "Pages"
-  }]
-    
+  }]  
 })
 
 module.exports = mongoose.model("NavigationMenu",MenuSchema)

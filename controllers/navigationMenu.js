@@ -1,15 +1,12 @@
 const ErrorResponse = require("../utils/errorResponse")
 const Menu = require("../models/NavigationMenu")
 
-
 // desc: Get menu ->Get /api/v1/menu -> permission: All
-
 exports.getMenu  = async(req,res,next) =>{
   try {
     let query
     query = Menu.find()
-
-    const menu = await query
+    await query
     res.status(200).json(
       res.result
     )
@@ -17,11 +14,9 @@ exports.getMenu  = async(req,res,next) =>{
   catch (error){
     next(error)
   }
-
 }
 
 // desc: Get one menu ->Get /api/v1/menu /:id-> permission: All
-
 exports.getOneMenu  = async(req,res,next) =>{
   try {
     const menu =await Menu.findById(req.params.id).populate({
@@ -41,11 +36,9 @@ exports.getOneMenu  = async(req,res,next) =>{
   catch (error){
     next(error)
   }
-
 }
 
 // desc: add menu ->Post  /api/v1/menu-> permission: Admin+ Manager
-
 exports.addMenu  = async(req,res,next) =>{
   try {
     const menu = await Menu.create(req.body)
@@ -57,13 +50,9 @@ exports.addMenu  = async(req,res,next) =>{
   catch (error){
     next(error)
   }
-
 }
 
-
-
 // desc: Update menu ->put /api/v1/menu/:id-> permission: Admin+ Manager
-
 exports.updateMenu  = async(req,res,next) =>{
   try {
     let menu = await Menu.findById(req.params.id)
@@ -83,13 +72,9 @@ exports.updateMenu  = async(req,res,next) =>{
   catch (error){
     next(error)
   }
-
 }
 
-
-
 // desc: Delete menu ->delete /api/v1/menu/:id-> permission: Admin+ Manager
-
 exports.deleteMenu  = async(req,res,next) =>{
   try {
     const  menu = await Menu.findById(req.params.id)
@@ -106,5 +91,4 @@ exports.deleteMenu  = async(req,res,next) =>{
   catch (error){
     next(error)
   }
-
 }

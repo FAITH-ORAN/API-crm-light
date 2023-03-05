@@ -1,10 +1,5 @@
 const express = require("express")
-const {getPages,
-  getPage,
-  createPage,
-  updatePage,
-  deletePage 
-}= require("../controllers/pages")
+const {getPages,getPage,createPage,updatePage,deletePage}= require("../controllers/pages")
 
 const Pages = require("../models/Pages")
 const result = require("../middelware/result")
@@ -21,7 +16,5 @@ router.route("/:id")
   .get(getPage)
   .put(protect,updatePage)
   .delete(protect,checkPermission("admin","manager"),deletePage)
-
-
 
 module.exports = router

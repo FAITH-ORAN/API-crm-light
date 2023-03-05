@@ -3,21 +3,19 @@ const Pages = require("../models/Pages")
 
 // desc: Get all pages ->Get /api/v1/pages -> permission: All(published),logged(published+draft)
 exports.getPages = async(req,res,next) =>{
-
   try {
-    console.log(req.user)
     res.status(200).json(res.result)
   } catch (error) {
     next(error)
   }
 }
+
 // desc: Get single page ->Get /api/v1/pages/:id -> permission: All(published),Logged(published+draft)
 exports.getPage = async(req,res,next) =>{
-
   try {
     const page = await Pages.findById(req.params.id)
     if (!page){
-      return next(new ErrorResponse(`page not found with id of ${req.params.id}`,404))
+      return next(new ErrorResponse(`page n'existe pas avec l'id  ${req.params.id}`,404))
     }
 
     res.status(200).json({succes:true,data:page})
@@ -51,7 +49,7 @@ exports.updatePage =async (req,res,next) =>{
       runValidators: true
     })
     if (!page){
-      return next(new ErrorResponse(`page not found with id of ${req.params.id}`,404))
+      return next(new ErrorResponse(`page n'existe pas avec l'id  ${req.params.id}`,404))
     }
 
     res.status(200).json({success:true,data:page})
@@ -65,7 +63,7 @@ exports.deletePage = async(req,res,next) =>{
   try {
     const page = await Pages.findByIdAndDelete(req.params.id)
     if (!page){
-      return next(new ErrorResponse(`page not found with id of ${req.params.id}`,404))
+      return next(new ErrorResponse(`page n'existe pas avec l'id  ${req.params.id}`,404))
     }
 
     res.status(200).json({success:true,data:{}})

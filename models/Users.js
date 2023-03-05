@@ -1,8 +1,6 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
-const casual = require("casual")
 const jwt = require("jsonwebtoken")
-
 
 const UserSchema = new mongoose.Schema({
   firstName:{
@@ -33,8 +31,6 @@ const UserSchema = new mongoose.Schema({
     required:[true,"Veuillez ajouter un mot de passe"],
     match:[/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,"minimum 8 caractères, une majuscule,un chiffre et un caractère spéciale"]
   },
-  resPassToke:String,
-  resetPassExpire:String,
   createdAt:{
     type:Date,
     default: Date.now
@@ -52,14 +48,6 @@ UserSchema.pre("save",async function(next){
   next()
 })
 
-//Fake data
-UserSchema.pre("save",function(next){
-  this.firstName= casual.first_name
-  this.lastName =casual.last_name
-  this.email = casual.email
-  next()
-})
-
 //JWT 
 UserSchema.methods.getSignedJwtToken =function(){
   return jwt.sign({id:this._id },process.env.JWT_SEC,{
@@ -71,7 +59,5 @@ UserSchema.methods.getSignedJwtToken =function(){
 UserSchema.methods.matchPassword = async function(logedPassword){
   return await  bcrypt.compare(logedPassword,this.password)
 }
-
-
 
 module.exports = mongoose.model("Users",UserSchema)

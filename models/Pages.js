@@ -2,13 +2,12 @@ const mongoose = require("mongoose")
 const slugify = require("slugify")
 const casual = require("casual")
 
-
 const PageSchema = new mongoose.Schema({
   title:{
     type: String,
     unique: true,
     trim: true,
-    maxlength: [100, "le titre ne peux pas dépasser 70 caractères"]
+    maxlength: [100, "le titre ne peux pas dépasser 100 caractères"]
   },
   content :{
     type: String,
