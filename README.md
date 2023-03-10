@@ -51,7 +51,8 @@
 
   - I use nodemailer dependencie to send Email with message and generated token (is hashed).
 
-    <img src="https://res.cloudinary.com/dfqxbwfnc/image/upload/v1678011862/samples/javaFx/7B62729F-8076-43C2-A222-EE4696549843_1_105_c_gpm3ms.jpg" width="600" height="300" src="snap shoot from my mailtrap">
+    <img src="https://res.cloudinary.com/dfqxbwfnc/image/upload/v1678011862/samples/javaFx/7B62729F-8076-43C2-A222-EE4696549843_1_105_c_gpm3ms.jpg" width="600" height="300" alt
+    ="snap shoot from my mailtrap">
 
   **Security**
 
